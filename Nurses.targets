@@ -8,12 +8,12 @@
   <Target Name="CheckSourceCode" Inputs="@(Compile)"
           Outputs="$(CheckSourceCodeOutputFile)">
     <Message Importance="high" Text="Running nurses on source files..." />
-    <Exec Command="python $(MSBuildThisFileDirectory)CheckSourceCode.py --projectdir $(MSBuildProjectDirectory) --output $(CheckSourceCodeOutputFile) --sources @(Compile)" />
+    <Exec Command="python $(MSBuildThisFileDirectory)CheckCs.py --projectdir $(MSBuildProjectDirectory) --output $(CheckSourceCodeOutputFile) --sources @(Compile)" />
   </Target>
 
   <Target Name="VerifyProject">
     <Message Importance="high" Text="Running nurses on project file..." />
-    <Exec Command="python $(MSBuildThisFileDirectory)VerifyProject.py" />
+    <Exec Command="python $(MSBuildThisFileDirectory)CheckCsproj.py --projects $(MSBuildProjectFullPath)" />
     <Message Importance="high" Text="Done!" />
   </Target>
 

@@ -7,11 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildPlayground", "MSBuil
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0A20D3F1-DEE7-47E0-BB53-316DD942308A}"
 	ProjectSection(SolutionItems) = preProject
-		CheckSourceCode.py = CheckSourceCode.py
+		.gitignore = .gitignore
+		CheckCs.py = CheckCs.py
+		CheckCsproj.py = CheckCsproj.py
 		Nurses.targets = Nurses.targets
 		ProjectReferenceModifier.targets = ProjectReferenceModifier.targets
 		README = README
-		VerifyProject.py = VerifyProject.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{5947281F-FDA0-475D-8810-96DB96CD17D5}"
+	ProjectSection(SolutionItems) = preProject
+		tools\__init__.py = tools\__init__.py
+		tools\functions.py = tools\functions.py
+		tools\problem.py = tools\problem.py
 	EndProjectSection
 EndProject
 Global
@@ -27,5 +35,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5947281F-FDA0-475D-8810-96DB96CD17D5} = {0A20D3F1-DEE7-47E0-BB53-316DD942308A}
 	EndGlobalSection
 EndGlobal
