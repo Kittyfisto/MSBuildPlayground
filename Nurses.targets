@@ -17,7 +17,7 @@
     <Message Importance="high" Text="Done!" />
   </Target>
 
-  <Target Name="AfterBuild"
+  <Target Name="BeforeBuild"
           DependsOnTargets="CheckSourceCode;VerifyProject">
   </Target>
 </Project >

@@ -6,7 +6,7 @@ t0 = time.time()
 
 
 def check_content(file_name: str, file_content: str):
-	return [tools.warning(file_name, 1, 'yub yub, commander')]
+	return [tools.error(file_name, 1, 'yub yub, commander')]
 
 
 def check_source_file(file_name: str):
