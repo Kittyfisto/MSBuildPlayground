@@ -1,0 +1,3 @@
+Playground project to test extending MSBuild.
+The goal is to run custom tasks on all source files automatically by simply including a targets file with the project.
+Warnings / errors are included in the build log and allow the programmer to easily see when he does something wrong...

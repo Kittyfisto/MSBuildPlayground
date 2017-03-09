@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CheckSourceCodeOutputFile>$(OutputPath)CheckSourceCode.Report.$(MSBuildProjectName).txt</CheckSourceCodeOutputFile>
+  </PropertyGroup>
+
+  <Target Name="CheckSourceCode" Inputs="@(Compile)"
+          Outputs="$(CheckSourceCodeOutputFile)">
+    <Message Importance="high" Text="Running nurses on source files..." />
+    <Exec Command="python $(MSBuildThisFileDirectory)CheckSourceCode.py --projectdir $(MSBuildProjectDirectory) --output $(CheckSourceCodeOutputFile) --sources @(Compile)" />
+  </Target>
+
+  <Target Name="VerifyProject">
+    <Message Importance="high" Text="Running nurses on project file..." />
+    <Exec Command="python $(MSBuildThisFileDirectory)VerifyProject.py" />
+    <Message Importance="high" Text="Done!" />
+  </Target>
+
+  <Target Name="AfterBuild"
+          DependsOnTargets="CheckSourceCode;VerifyProject">
+  </Target>
+</Project >
