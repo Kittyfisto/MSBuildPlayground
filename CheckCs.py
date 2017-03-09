@@ -1,8 +1,8 @@
 import argparse
-import time
+from time import time
 import tools
 
-t0 = time.time()
+t0 = time()
 
 
 def check_content(file_name: str, file_content: str):
@@ -31,16 +31,7 @@ problems = []
 for source_file in source_files:
 	problems.extend(check_source_file(source_file))
 
-problem_count = len(problems)
-t1 = time.time()
+t1 = time()
 total = t1-t0
 
-if problem_count is 0:
-	print ('No problems found, {0:.2f}s'.format(total))
-else:
-	for problem in problems:
-		problem.print()
-	print ('Found {0} problems, {1:.2f}'.format(problem_count, total))
-
-
-
+tools.print_report(problems, total)

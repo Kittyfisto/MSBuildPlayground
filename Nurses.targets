@@ -5,19 +5,20 @@
     <CheckSourceCodeOutputFile>$(OutputPath)CheckSourceCode.Report.$(MSBuildProjectName).txt</CheckSourceCodeOutputFile>
   </PropertyGroup>
 
-  <Target Name="CheckSourceCode" Inputs="@(Compile)"
+  <Target Name="CheckCs" Inputs="@(Compile)"
           Outputs="$(CheckSourceCodeOutputFile)">
     <Message Importance="high" Text="Running nurses on source files..." />
     <Exec Command="python $(MSBuildThisFileDirectory)CheckCs.py --projectdir $(MSBuildProjectDirectory) --output $(CheckSourceCodeOutputFile) --sources @(Compile)" />
   </Target>
 
-  <Target Name="VerifyProject">
+  <Target Name="CheckCsproj">
     <Message Importance="high" Text="Running nurses on project file..." />
     <Exec Command="python $(MSBuildThisFileDirectory)CheckCsproj.py --projects $(MSBuildProjectFullPath)" />
     <Message Importance="high" Text="Done!" />
   </Target>
 
+  <!-- All nurses are run before the actual build happens. This is done to prevent building the dll/executable in case a nurse produces an error. -->
   <Target Name="BeforeBuild"
-          DependsOnTargets="CheckSourceCode;VerifyProject">
+          DependsOnTargets="CheckCs;CheckCsproj">
   </Target>
 </Project >
